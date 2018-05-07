@@ -1,0 +1,44 @@
+name: haskellbook
+version: '0.1.0.0'
+category: Web
+author: Zack Kourouma
+maintainer: zack@kourouma.me
+copyright: 2018 Zack Kourouma
+license: BSD3
+github: zkourouma/haskellbook
+extra-source-files:
+- README.md
+library:
+  source-dirs: src
+  exposed-modules:
+  - Data.String.Strip
+  - ChNine
+  - Cipher
+  dependencies:
+  - base >=4.7 && <5
+executables:
+  haskellbook:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - haskellbook
+tests:
+  haskellbook-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - haskellbook
+    - hspec
+    - QuickCheck
+
+
