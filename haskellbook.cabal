@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 417bcf579826ffbbffa7549834f61a6ce3c35213030b690e71f792df15534e68
+-- hash: 5707a89e6cca8b53f9867cc0ec6c17c5d52f9eb1e89c172aa9a1db3bf34fcc92
 
 name:                haskellbook
 version:             0.1.0.0
@@ -27,8 +27,8 @@ library
   hs-source-dirs:
       src
   exposed-modules:
-      Data.String.Strip
       ChNine
+      ChTen
       Cipher
   other-modules:
       Paths_haskellbook
@@ -54,7 +54,6 @@ test-suite haskellbook-test
   other-modules:
       ChNineSpec
       CipherSpec
-      Data.String.StripSpec
       Paths_haskellbook
   hs-source-dirs:
       test

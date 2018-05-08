@@ -11,8 +11,8 @@ extra-source-files:
 library:
   source-dirs: src
   exposed-modules:
-  - Data.String.Strip
   - ChNine
+  - ChTen
   - Cipher
   dependencies:
   - base >=4.7 && <5
