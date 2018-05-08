@@ -1,10 +1,4 @@
-module ChNine
-  ( zzip
-  , zzipWith
-  , yell
-  , yelling
-  , titleize
-  ) where
+module ChNine where
 
 import           Data.Char
 
@@ -40,8 +34,7 @@ myAny _ []     = False
 myAny f (x:xs) = f x || myAny f xs
 
 myElem :: Eq a => a -> [a] -> Bool
-myElem _ []      = False
-myElem el (x:xs) = el == x || myElem el xs
+myElem el = any (== el)
 
 myReverse :: [a] -> [a]
 myReverse []     = []
