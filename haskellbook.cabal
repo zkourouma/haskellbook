@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5707a89e6cca8b53f9867cc0ec6c17c5d52f9eb1e89c172aa9a1db3bf34fcc92
+-- hash: 7c81138240c2b42e71509d33c23c495979d1bd2dd28445f398519fd075446ccf
 
 name:                haskellbook
 version:             0.1.0.0
@@ -34,6 +34,7 @@ library
       Paths_haskellbook
   build-depends:
       base >=4.7 && <5
+    , time
   default-language: Haskell2010
 
 executable haskellbook
@@ -53,6 +54,7 @@ test-suite haskellbook-test
   main-is: Spec.hs
   other-modules:
       ChNineSpec
+      ChTenSpec
       CipherSpec
       Paths_haskellbook
   hs-source-dirs:

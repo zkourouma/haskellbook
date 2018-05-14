@@ -16,6 +16,7 @@ library:
   - Cipher
   dependencies:
   - base >=4.7 && <5
+  - time
 executables:
   haskellbook:
     main: Main.hs
