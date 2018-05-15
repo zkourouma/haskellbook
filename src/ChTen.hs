@@ -106,9 +106,9 @@ myMaximumBy fn myList = foldr maxed (head myList) myList
         _  -> y
 
 myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
-myMinimumBy fn myList = foldr maxed (head myList) myList
+myMinimumBy fn myList = foldr minned (head myList) myList
   where
-    maxed x y =
+    minned x y =
       case fn x y of
         GT -> y
         _  -> x

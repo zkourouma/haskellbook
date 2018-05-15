@@ -35,8 +35,8 @@ spec = do
       myFilter even [1 .. 5] `shouldBe` [2, 4]
       myFilter odd [1 .. 5] `shouldBe` [1, 3, 5]
   describe "squish" $
-    it "acts like concat" $ do
-      squish [[1, 2, 3], [4, 5, 6], [7, 8, 9]] `shouldBe` [1 .. 9]
+    it "acts like concat" $
+    squish [[1, 2, 3], [4, 5, 6], [7, 8, 9]] `shouldBe` [1 .. 9]
   describe "squishMap" $
     it "maps a function over a list and concatenates the results" $ do
       squishMap (\x -> [1, x, 3]) [2] `shouldBe` [1, 2, 3]
