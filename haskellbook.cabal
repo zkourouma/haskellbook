@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7c81138240c2b42e71509d33c23c495979d1bd2dd28445f398519fd075446ccf
+-- hash: 5e316f08c276aa73c752864a2a4960abd065815889385e5a06fdc6fa4e161b4f
 
 name:                haskellbook
 version:             0.1.0.0
@@ -29,6 +29,7 @@ library
   exposed-modules:
       ChNine
       ChTen
+      ChEleven
       Cipher
   other-modules:
       Paths_haskellbook

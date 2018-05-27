@@ -13,6 +13,7 @@ library:
   exposed-modules:
   - ChNine
   - ChTen
+  - ChEleven
   - Cipher
   dependencies:
   - base >=4.7 && <5
