@@ -1,3 +1,6 @@
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+
 module ChEleven where
 
 newtype Price =
@@ -48,3 +51,19 @@ areCars = map isCar
 
 getManu :: Vehicle -> Manufacturer
 getManu (Car man _) = man
+
+class TooMany a where
+  tooMany :: a -> Bool
+
+instance TooMany Int where
+  tooMany n = n > 42
+
+newtype Goats =
+  Goats Int
+  deriving (Eq, Show, TooMany)
+
+instance TooMany (Int, String) where
+  tooMany (i, s) = i + length s > 42
+
+instance TooMany (Int, Int) where
+  tooMany (n, m) = n + m > 42
