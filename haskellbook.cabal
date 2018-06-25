@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5e316f08c276aa73c752864a2a4960abd065815889385e5a06fdc6fa4e161b4f
+-- hash: e221b6b7013a55cd80007105893235a361a0a19247a39ae05f8aff3b2ed9f1c9
 
 name:                haskellbook
 version:             0.1.0.0
@@ -54,6 +54,7 @@ test-suite haskellbook-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      ChElevenSpec
       ChNineSpec
       ChTenSpec
       CipherSpec
