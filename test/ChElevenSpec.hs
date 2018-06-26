@@ -35,3 +35,15 @@ spec = do
         ""
         (Node (Node Leaf "baz" Leaf) "foo" (Node Leaf "bar" Leaf)) `shouldBe`
         "bazfoobar"
+  describe "isSubseqOf" $
+    it "checks if a given string is a substring of another" $ do
+      isSubseqOf "blah" "blahwoot" `shouldBe` True
+      isSubseqOf "blah" "wootblah" `shouldBe` True
+      isSubseqOf "blah" "wboloath" `shouldBe` True
+      isSubseqOf "blah" "wootbla" `shouldBe` False
+      isSubseqOf "blah" "halbwoot" `shouldBe` False
+      isSubseqOf "blah" "blawhoot" `shouldBe` True
+  describe "capitalizeWords" $
+    it "splits a sentence into words then tuple each word w/ the cap" $
+    capitalizeWords "hello world" `shouldBe`
+    [("hello", "Hello"), ("world", "World")]

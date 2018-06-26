@@ -3,6 +3,8 @@
 
 module ChEleven where
 
+import           Data.Char
+
 newtype Price =
   Price Integer
   deriving (Eq, Show)
@@ -136,3 +138,16 @@ foldTree _ b Leaf = b
 foldTree f b (Node left a right) = foldTree f b' left
   where
     b' = f a $ foldTree f b right
+
+isSubseqOf :: (Eq a) => [a] -> [a] -> Bool
+isSubseqOf substr@(a:as) str@(b:bs)
+  | a == b = isSubseqOf as bs
+  | null as = True
+  | null bs = False
+  | null str = False
+  | null substr = True
+  | otherwise = isSubseqOf substr bs
+
+capitalizeWords :: String -> [(String, String)]
+capitalizeWords sentence =
+  [(word, toUpper w : ws) | word@(w:ws) <- words sentence]
