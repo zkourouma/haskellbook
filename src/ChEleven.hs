@@ -140,12 +140,10 @@ foldTree f b (Node left a right) = foldTree f b' left
     b' = f a $ foldTree f b right
 
 isSubseqOf :: (Eq a) => [a] -> [a] -> Bool
+isSubseqOf [] _ = True
+isSubseqOf _ [] = False
 isSubseqOf substr@(a:as) str@(b:bs)
   | a == b = isSubseqOf as bs
-  | null as = True
-  | null bs = False
-  | null str = False
-  | null substr = True
   | otherwise = isSubseqOf substr bs
 
 capitalizeWords :: String -> [(String, String)]
