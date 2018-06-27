@@ -4,6 +4,8 @@
 module ChEleven where
 
 import           Data.Char
+import           Data.List
+import           Data.List.Split
 
 newtype Price =
   Price Integer
@@ -149,3 +151,11 @@ isSubseqOf substr@(a:as) str@(b:bs)
 capitalizeWords :: String -> [(String, String)]
 capitalizeWords sentence =
   [(word, toUpper w : ws) | word@(w:ws) <- words sentence]
+
+capitalizeWord :: String -> String
+capitalizeWord ""     = ""
+capitalizeWord (c:cs) = toUpper c : cs
+
+capitalizeParagraph :: String -> String
+capitalizeParagraph paragraph =
+  intercalate ". " $ map capitalizeWord $ splitOn ". " paragraph

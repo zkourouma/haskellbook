@@ -47,3 +47,6 @@ spec = do
     it "splits a sentence into words then tuple each word w/ the cap" $
     capitalizeWords "hello world" `shouldBe`
     [("hello", "Hello"), ("world", "World")]
+  describe "capitalizeParagraph" $
+    it "capitalizes the first words of sentences in a paragraph" $
+    capitalizeParagraph "blah. woot ha." `shouldBe` "Blah. Woot ha."
