@@ -14,6 +14,7 @@ library:
   - ChNine
   - ChTen
   - ChEleven
+  - ChTwelve
   - Cipher
   dependencies:
   - base >=4.7 && <5
