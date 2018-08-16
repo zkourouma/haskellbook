@@ -159,3 +159,26 @@ myUnfoldr f = go
 
 betterIterate :: (a -> a) -> a -> [a]
 betterIterate f = myUnfoldr (\b -> Just (b, f b))
+
+data BinaryTree a
+  = Leaf
+  | Node (BinaryTree a)
+         a
+         (BinaryTree a)
+  deriving (Eq, Ord, Show)
+
+unfold :: (a -> Maybe (a, b, a)) -> a -> BinaryTree b
+unfold f a =
+  case f a of
+    Nothing        -> Leaf
+    Just (x, y, z) -> Node (unfold f x) y (unfold f z)
+
+treeBuild :: Integer -> BinaryTree Integer
+treeBuild n = unfold treeBuild' (takeN n [0 ..])
+
+treeBuild' :: [Integer] -> Maybe ([Integer], Integer, [Integer])
+treeBuild' []     = Nothing
+treeBuild' (x:xs) = Just (xs, x, xs)
+
+takeN :: Integer -> [a] -> [a]
+takeN n = take (fromIntegral n)
