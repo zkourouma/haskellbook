@@ -174,11 +174,8 @@ unfold f a =
     Just (x, y, z) -> Node (unfold f x) y (unfold f z)
 
 treeBuild :: Integer -> BinaryTree Integer
-treeBuild n = unfold treeBuild' (takeN n [0 ..])
+treeBuild n = unfold treeBuild' [0 .. n - 1]
 
 treeBuild' :: [Integer] -> Maybe ([Integer], Integer, [Integer])
 treeBuild' []     = Nothing
 treeBuild' (x:xs) = Just (xs, x, xs)
-
-takeN :: Integer -> [a] -> [a]
-takeN n = take (fromIntegral n)
