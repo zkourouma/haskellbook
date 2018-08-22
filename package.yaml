@@ -7,7 +7,7 @@ copyright: 2018 Zack Kourouma
 license: BSD3
 github: zkourouma/haskellbook
 extra-source-files:
-- README.md
+  - README.md
 library:
   source-dirs: src
   exposed-modules:
@@ -17,32 +17,30 @@ library:
     - Twelve
     - Cipher
   dependencies:
-  - base >=4.7 && <5
-  - time
-  - split
+    - base >=4.7 && <5
+    - time
+    - split
 executables:
   haskellbook:
     main: Main.hs
     source-dirs: app
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - base
-    - haskellbook
+      - base
+      - haskellbook
 tests:
   haskellbook-test:
     main: Spec.hs
     source-dirs: test
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - base
-    - haskellbook
-    - hspec
-    - QuickCheck
-
-
+      - base
+      - haskellbook
+      - hspec
+      - QuickCheck
