@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances          #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
-module ChEleven where
+module Eleven where
 
 import           Data.Char
 import           Data.List

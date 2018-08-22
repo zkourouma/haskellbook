@@ -1,4 +1,4 @@
-module ChNineSpec
+module NineSpec
   ( main
   , spec
   ) where
@@ -6,7 +6,7 @@ module ChNineSpec
 import           Test.Hspec
 import           Test.QuickCheck
 
-import           ChNine
+import           Nine
 
 main :: IO ()
 main = hspec spec

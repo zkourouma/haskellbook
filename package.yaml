@@ -11,11 +11,11 @@ extra-source-files:
 library:
   source-dirs: src
   exposed-modules:
-  - ChNine
-  - ChTen
-  - ChEleven
-  - ChTwelve
-  - Cipher
+    - Nine
+    - Ten
+    - Eleven
+    - Twelve
+    - Cipher
   dependencies:
   - base >=4.7 && <5
   - time

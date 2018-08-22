@@ -1,10 +1,10 @@
 cabal-version: >= 1.10
 
--- This file has been generated from package.yaml by hpack version 0.29.5.
+-- This file has been generated from package.yaml by hpack version 0.29.6.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c0e2d8dae9fad98af0a06f8f66481c7d66d31bf2844821be8aa9d2a37d15b8f5
+-- hash: c7da5f1309482dfee0d9cff4e05d0defa167cd4e862497fb4beb016f92dc284c
 
 name:                haskellbook
 version:             0.1.0.0
@@ -28,10 +28,10 @@ library
   hs-source-dirs:
       src
   exposed-modules:
-      ChNine
-      ChTen
-      ChEleven
-      ChTwelve
+      Nine
+      Ten
+      Eleven
+      Twelve
       Cipher
   other-modules:
       Paths_haskellbook
@@ -57,11 +57,11 @@ test-suite haskellbook-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      ChElevenSpec
-      ChNineSpec
-      ChTenSpec
-      ChTwelveSpec
       CipherSpec
+      ElevenSpec
+      NineSpec
+      TenSpec
+      TwelveSpec
       Paths_haskellbook
   hs-source-dirs:
       test

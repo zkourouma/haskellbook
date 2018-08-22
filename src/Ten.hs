@@ -1,4 +1,4 @@
-module ChTen where
+module Ten where
 
 import           Data.Time
 
@@ -47,7 +47,7 @@ avgDb :: [DatabaseItem] -> Double
 avgDb d =
   let s = sumDb d
       c = length (filterDbNumber d)
-  in fromIntegral s / fromIntegral c
+   in fromIntegral s / fromIntegral c
 
 fibs :: [Integer]
 fibs = 1 : scanl (+) 1 fibs

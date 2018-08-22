@@ -1,4 +1,4 @@
-module ChNine where
+module Nine where
 
 import           Data.Char
 
@@ -63,7 +63,7 @@ myMaximumBy f (x:y:xs) =
         case f x y of
           LT -> y
           _  -> x
-  in myMaximumBy f (keeper : xs)
+   in myMaximumBy f (keeper : xs)
 
 myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
 myMinimumBy _ [x] = x
@@ -76,7 +76,7 @@ myMinimumBy f (x:y:xs) =
         case f x y of
           LT -> x
           _  -> y
-  in myMinimumBy f (keeper : xs)
+   in myMinimumBy f (keeper : xs)
 
 myMaximum :: (Ord a) => [a] -> a
 myMaximum = myMaximumBy compare

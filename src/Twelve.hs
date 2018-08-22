@@ -1,4 +1,4 @@
-module ChTwelve where
+module Twelve where
 
 -- String Processing
 replaceThe :: String -> String

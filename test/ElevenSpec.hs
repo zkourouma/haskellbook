@@ -1,11 +1,11 @@
-module ChElevenSpec
+module ElevenSpec
   ( main
   , spec
   ) where
 
 import           Test.Hspec
 
-import           ChEleven
+import           Eleven
 
 main :: IO ()
 main = hspec spec
