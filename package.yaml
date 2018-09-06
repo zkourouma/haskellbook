@@ -15,11 +15,14 @@ library:
     - Ten
     - Eleven
     - Twelve
+    - Monoidal
+    - Semigroupoid
     - Cipher
   dependencies:
     - base >=4.7 && <5
     - time
     - split
+    - QuickCheck
 executables:
   haskellbook:
     main: Main.hs
