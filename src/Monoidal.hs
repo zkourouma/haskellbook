@@ -46,3 +46,76 @@ instance Monoid a => Monoid (First' a) where
 type FirstMappend = First' String -> First' String -> First' String -> Bool
 
 type FstId = First' String -> Bool
+
+newtype Identity a =
+  Identity a
+  deriving (Eq, Show)
+
+instance Monoid a => Monoid (Identity a) where
+  mempty = Identity mempty
+  mappend (Identity x) (Identity y) = Identity (mappend x y)
+
+instance Arbitrary a => Arbitrary (Identity a) where
+  arbitrary = Identity <$> arbitrary
+
+type IdenMappend = Identity String -> Identity String -> Identity String -> Bool
+
+type IdenId = Identity String -> Bool
+
+data Two a b =
+  Two a
+      b
+  deriving (Eq, Show)
+
+instance (Monoid a, Monoid b) => Monoid (Two a b) where
+  mempty = Two mempty mempty
+  mappend (Two x y) (Two x' y') = Two (mappend x x') (mappend y y')
+
+instance (Arbitrary a, Arbitrary b) => Arbitrary (Two a b) where
+  arbitrary = do
+    x <- arbitrary
+    y <- arbitrary
+    return $ Two x y
+
+type TwoMappend
+   = Two String String -> Two String String -> Two String String -> Bool
+
+type TwoId = Two String String -> Bool
+
+newtype BoolConj =
+  BoolConj Bool
+  deriving (Eq, Show)
+
+instance Monoid BoolConj where
+  mempty = BoolConj True
+  mappend (BoolConj x) (BoolConj y) = BoolConj (x && y)
+
+instance Arbitrary BoolConj where
+  arbitrary = BoolConj <$> arbitrary
+
+type BoolConjMappend = BoolConj -> BoolConj -> BoolConj -> Bool
+
+type BoolConjId = BoolConj -> Bool
+
+newtype BoolDisj =
+  BoolDisj Bool
+  deriving (Eq, Show)
+
+instance Monoid BoolDisj where
+  mempty = BoolDisj False
+  mappend (BoolDisj x) (BoolDisj y) = BoolDisj (x || y)
+
+instance Arbitrary BoolDisj where
+  arbitrary = BoolDisj <$> arbitrary
+
+type BoolDisjMappend = BoolDisj -> BoolDisj -> BoolDisj -> Bool
+
+type BoolDisjId = BoolDisj -> Bool
+
+newtype Combine a b = Combine
+  { unCombine :: a -> b
+  }
+
+instance Monoid b => Monoid (Combine a b) where
+  mempty = Combine (const mempty)
+  mappend (Combine f) (Combine g) = Combine (\n -> mappend (f n) (g n))
