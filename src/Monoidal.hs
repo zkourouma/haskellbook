@@ -119,3 +119,23 @@ newtype Combine a b = Combine
 instance Monoid b => Monoid (Combine a b) where
   mempty = Combine (const mempty)
   mappend (Combine f) (Combine g) = Combine (\n -> mappend (f n) (g n))
+
+newtype Comp a =
+  Comp (a -> a)
+
+instance Monoid a => Monoid (Comp a) where
+  mempty = Comp id
+  mappend (Comp f) (Comp g) = Comp (g . f)
+
+newtype Mem s a = Mem
+  { runMem :: s -> (a, s)
+  }
+
+instance Monoid a => Monoid (Mem s a) where
+  mempty = Mem (\s -> (mempty, s))
+  mappend (Mem f) (Mem g) =
+    Mem
+      (\s ->
+         let (x, y) = f s
+             (x', y') = g y
+          in (mappend x x', y'))
