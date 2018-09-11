@@ -139,3 +139,22 @@ instance Monoid a => Monoid (Mem s a) where
          let (x, y) = f s
              (x', y') = g y
           in (mappend x x', y'))
+
+-- Sanity checking
+f' = Mem $ \s -> ("hi", s + 1)
+
+mem' = do
+  let rmzero = runMem mempty 0
+      rmleft = runMem (f' <> mempty) 0
+      rmright = runMem (mempty <> f') 0
+  print rmleft
+  print rmright
+  print (rmzero :: (String, Int))
+  print $ rmleft == runMem f' 0
+  print $ rmright == runMem f' 0
+-- should output
+-- ("hi", 1)
+-- ("hi", 1)
+-- ("", 0)
+-- True
+-- True
