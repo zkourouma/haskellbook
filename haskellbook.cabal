@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 838609e009324bff0a4575c7527f3286936877550cc894b71fb8b6e45ba4c0e8
+-- hash: b12ea72ec28917237b97f92066aa484a62512caf1fa54800c228e18f553efb45
 
 name:                haskellbook
 version:             0.1.0.0
@@ -28,13 +28,14 @@ library
   hs-source-dirs:
       src
   exposed-modules:
+      Cipher
       Nine
       Ten
       Eleven
       Twelve
       Monoidal
       Semigroupoid
-      Cipher
+      Functorial
   other-modules:
       Paths_haskellbook
   build-depends:

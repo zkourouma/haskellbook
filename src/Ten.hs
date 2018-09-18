@@ -2,6 +2,12 @@ module Ten where
 
 import           Data.Time
 
+{-# ANN myOr "HLint: ignore" #-}
+
+{-# ANN myMap "HLint: ignore" #-}
+
+{-# ANN squish "HLint: ignore" #-}
+
 data DatabaseItem
   = DbString String
   | DbNumber Integer

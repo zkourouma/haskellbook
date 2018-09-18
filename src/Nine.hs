@@ -2,6 +2,12 @@ module Nine where
 
 import           Data.Char
 
+{-# ANN myOr "HLint: ignore" #-}
+
+{-# ANN myElem "HLint: ignore" #-}
+
+{-# ANN squish "HLint: ignore" #-}
+
 zzipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
 zzipWith fn [] _          = []
 zzipWith fn _ []          = []
