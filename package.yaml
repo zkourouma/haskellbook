@@ -19,6 +19,7 @@ library:
     - Monoidal
     - Semigroupoid
     - Functorial
+    - Applicatives
   dependencies:
     - base >=4.7 && <5
     - time
