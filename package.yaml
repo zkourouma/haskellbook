@@ -25,6 +25,7 @@ library:
     - time
     - split
     - QuickCheck
+    - checkers
 executables:
   haskellbook:
     main: Main.hs
@@ -49,3 +50,4 @@ tests:
       - haskellbook
       - hspec
       - QuickCheck
+      - checkers

@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.30.0.
+-- This file has been generated from package.yaml by hpack version 0.31.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 04e186b2702421dc42c6c6ca6d51bd89a475ea54bf443ce9d780f1b09968b79a
+-- hash: 227bd30a8a752d87d11d6750fa2ed0bbb51eced55e3c1e7e81cec9581ed771cc
 
 name:                haskellbook
 version:             0.1.0.0
@@ -42,6 +42,7 @@ library
   build-depends:
       QuickCheck
     , base >=4.7 && <5
+    , checkers
     , split
     , time
   default-language: Haskell2010
@@ -62,6 +63,7 @@ test-suite haskellbook-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      ApplicativesSpec
       CipherSpec
       ElevenSpec
       FunctorialSpec
@@ -77,6 +79,7 @@ test-suite haskellbook-test
   build-depends:
       QuickCheck
     , base
+    , checkers
     , haskellbook
     , hspec
   default-language: Haskell2010

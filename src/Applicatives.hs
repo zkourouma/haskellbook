@@ -1,8 +1,25 @@
 module Applicatives where
 
 import           Control.Applicative
-import           Data.List           (elemIndex)
+import           Data.List                (elemIndex)
+import           Test.QuickCheck
+import           Test.QuickCheck.Checkers
+import           Test.QuickCheck.Classes
 
+-------- Applicative laws --------
+--
+-- Identity
+-- pure id <*> v = v
+--
+-- Composition
+-- pure (.) <*> u <*> v <*> w = u <*> (v <*> w)
+--
+-- Homomorphism
+-- pure f <*> pure x = pure (f x)
+--
+-- Interchange
+-- u <*> pure y = pure ($ y) <*> u
+--
 added :: Maybe Integer
 added = Just (+ 3) <*> lookup 3 (zip [1, 2, 3] [4, 5, 6])
 
@@ -61,3 +78,41 @@ instance Functor (Constant a) where
 instance Monoid a => Applicative (Constant a) where
   pure a = Constant mempty
   (<*>) (Constant f) (Constant _) = Constant f
+
+data List a
+  = Nil
+  | Cons a
+         (List a)
+  deriving (Eq, Show)
+
+instance Functor List where
+  fmap _ Nil         = Nil
+  fmap f (Cons a as) = Cons (f a) (fmap f as)
+
+instance Applicative List where
+  pure x = Cons x Nil
+  (<*>) Nil _          = Nil
+  (<*>) _ Nil          = Nil
+  (<*>) (Cons x xs) ys = (x <$> ys) `append` (xs <*> ys)
+
+instance Arbitrary a => Arbitrary (List a) where
+  arbitrary = do
+    a <- arbitrary
+    return $ Cons a Nil
+
+append :: List a -> List a -> List a
+append Nil ys         = ys
+append (Cons x xs) ys = Cons x $ xs `append` ys
+
+fold :: (a -> b -> b) -> b -> List a -> b
+fold _ b Nil        = b
+fold f b (Cons h t) = f h (fold f b t)
+
+concat' :: List (List a) -> List a
+concat' = fold append Nil
+
+flatMap :: (a -> List b) -> List a -> List b
+flatMap f as = concat' $ fmap f as
+
+instance Eq a => EqProp (List a) where
+  (=-=) = eq
