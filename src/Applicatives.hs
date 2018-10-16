@@ -119,7 +119,7 @@ take' :: Int -> List a -> List a
 take' _ Nil = Nil
 take' n (Cons x xs)
   | n > 0 = Cons x (take' (n - 1) xs)
-  | otherwise = Cons x xs
+  | otherwise = Cons x Nil
 
 repeat' :: a -> List a
 repeat' x =
@@ -149,7 +149,7 @@ instance Eq a => EqProp (ZipList' a) where
     where
       xs' =
         let (ZipList' l) = xs
-         in take' 1000 l
+         in take' 100 l
       ys' =
         let (ZipList' l) = ys
-         in take' 1000 l
+         in take' 100 l
