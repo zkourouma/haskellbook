@@ -16,6 +16,9 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-  describe "Applicative a => List a" $ do
-    it "has the EqProp" $
-      quickBatch (applicative (Nil :: List ((String, String, Int))))
+  describe "List a" $
+    it "satisfies the applicative laws" $
+    quickBatch (applicative (Nil :: List (String, String, Int)))
+  describe "ZipList' a" $
+    it "satisfies the applicative laws" $
+    quickBatch (applicative (ZipList' Nil :: ZipList' (String, String, Int)))

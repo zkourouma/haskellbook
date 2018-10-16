@@ -96,9 +96,7 @@ instance Applicative List where
   (<*>) (Cons x xs) ys = (x <$> ys) `append` (xs <*> ys)
 
 instance Arbitrary a => Arbitrary (List a) where
-  arbitrary = do
-    a <- arbitrary
-    return $ Cons a Nil
+  arbitrary = pure <$> arbitrary
 
 append :: List a -> List a -> List a
 append Nil ys         = ys
@@ -116,3 +114,42 @@ flatMap f as = concat' $ fmap f as
 
 instance Eq a => EqProp (List a) where
   (=-=) = eq
+
+take' :: Int -> List a -> List a
+take' _ Nil = Nil
+take' n (Cons x xs)
+  | n > 0 = Cons x (take' (n - 1) xs)
+  | otherwise = Cons x xs
+
+repeat' :: a -> List a
+repeat' x =
+  let c = Cons x c
+   in c
+
+zip' :: List (a -> b) -> List a -> List b
+zip' (Cons x xs) (Cons y ys) = Cons (x y) (zip' xs ys)
+zip' _ _                     = Nil
+
+newtype ZipList' a =
+  ZipList' (List a)
+  deriving (Eq, Show)
+
+instance Functor ZipList' where
+  fmap f (ZipList' xs) = ZipList' $ fmap f xs
+
+instance Applicative ZipList' where
+  pure x = ZipList' $ repeat' x
+  (<*>) (ZipList' xs) (ZipList' ys) = ZipList' $ zip' xs ys
+
+instance Arbitrary a => Arbitrary (ZipList' a) where
+  arbitrary = pure <$> arbitrary
+
+instance Eq a => EqProp (ZipList' a) where
+  xs =-= ys = xs' `eq` ys'
+    where
+      xs' =
+        let (ZipList' l) = xs
+         in take' 1000 l
+      ys' =
+        let (ZipList' l) = ys
+         in take' 1000 l
