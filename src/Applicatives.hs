@@ -2,7 +2,7 @@ module Applicatives where
 
 import           Control.Applicative
 import           Data.List                (elemIndex)
-import           Test.QuickCheck
+import           Test.QuickCheck          (Arbitrary, arbitrary)
 import           Test.QuickCheck.Checkers
 import           Test.QuickCheck.Classes
 
@@ -149,7 +149,78 @@ instance Eq a => EqProp (ZipList' a) where
     where
       xs' =
         let (ZipList' l) = xs
-         in take' 100 l
+         in take' 10 l
       ys' =
         let (ZipList' l) = ys
-         in take' 100 l
+         in take' 10 l
+
+data Validation e a
+  = Failure e
+  | Success a
+  deriving (Eq, Show)
+
+instance Functor (Validation e) where
+  fmap f (Success a) = Success (f a)
+  fmap _ (Failure e) = Failure e
+
+instance Monoid e => Applicative (Validation e) where
+  pure = Success
+  (<*>) (Failure e) (Failure e') = Failure (e `mappend` e')
+  (<*>) (Success a) (Success a') = Success (a a')
+  (<*>) (Failure e) _            = Failure e
+  (<*>) _ (Failure e)            = Failure e
+
+data Pair a =
+  Pair a
+       a
+  deriving (Eq, Show)
+
+instance Functor Pair where
+  fmap f (Pair x x') = Pair (f x) (f x')
+
+instance Applicative Pair where
+  pure a = Pair a a
+  (<*>) (Pair f g) (Pair a b) = Pair (f a) (g b)
+
+data Two a b =
+  Two a
+      b
+  deriving (Eq, Show)
+
+instance Functor (Two a) where
+  fmap f (Two a b) = Two a (f b)
+
+instance Monoid a => Applicative (Two a) where
+  pure = Two mempty
+  (<*>) (Two f g) (Two a b) = Two (mappend f a) (g b)
+
+data Three a b c =
+  Three a
+        b
+        c
+  deriving (Eq, Show)
+
+instance Functor (Three a b) where
+  fmap f (Three a b c) = Three a b (f c)
+
+instance (Monoid a, Monoid b) => Applicative (Three a b) where
+  pure = Three mempty mempty
+  (<*>) (Three f g h) (Three a b c) = Three (mappend f a) (mappend g b) (h c)
+
+data Three' a b =
+  Three' a
+         b
+         b
+  deriving (Eq, Show)
+
+instance Functor (Three' a) where
+  fmap f (Three' a b b') = Three' a (f b) (f b')
+
+instance Monoid a => Applicative (Three' a) where
+  pure b = Three' mempty b b
+  (<*>) (Three' f g h) (Three' a b b') = Three' (mappend f a) (g b) (h b')
+
+combos :: [a] -> [b] -> [c] -> [(a, b, c)]
+combos = liftA3 f
+  where
+    f a b c = (a, b, c)
