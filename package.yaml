@@ -20,6 +20,7 @@ library:
     - Semigroupoid
     - Functorial
     - Applicatives
+    - Monadic
   dependencies:
     - base >=4.7 && <5
     - time

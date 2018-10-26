@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 227bd30a8a752d87d11d6750fa2ed0bbb51eced55e3c1e7e81cec9581ed771cc
+-- hash: e515f8562f861831cac902ed78ed0cc64325a28ef5ccddf6713e1b319e7b4ac3
 
 name:                haskellbook
 version:             0.1.0.0
@@ -37,6 +37,7 @@ library
       Semigroupoid
       Functorial
       Applicatives
+      Monadic
   other-modules:
       Paths_haskellbook
   build-depends:
