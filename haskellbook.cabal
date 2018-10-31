@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e515f8562f861831cac902ed78ed0cc64325a28ef5ccddf6713e1b319e7b4ac3
+-- hash: 10f14a33d6c4fcb062473a022555b6623348a53fdc38134f7d958d9c644d4499
 
 name:                haskellbook
 version:             0.1.0.0
@@ -68,6 +68,7 @@ test-suite haskellbook-test
       CipherSpec
       ElevenSpec
       FunctorialSpec
+      MonadicSpec
       MonoidalSpec
       NineSpec
       SemigroupoidSpec
