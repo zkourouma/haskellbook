@@ -15,10 +15,11 @@ main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec -- do
+ =
   describe "List a" $
-    it "satisfies the applicative laws" $
-    quickBatch (applicative (Nil :: List (String, String, Int)))
-  describe "ZipList' a" $
-    it "satisfies the applicative laws" $
-    quickBatch (applicative (ZipList' Nil :: ZipList' (String, String, Int)))
+  it "satisfies the applicative laws" $
+  quickBatch (applicative (Nil :: List (String, String, Int)))
+  -- describe "ZipList' a" $
+  --   it "satisfies the applicative laws" $
+  --   quickBatch (applicative (ZipList' Nil :: ZipList' (String, String, Int)))
