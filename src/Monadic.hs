@@ -151,4 +151,8 @@ a :: Monad m => m a -> m (a -> b) -> m b
 a = flip (<*>)
 
 meh :: Monad m => [a] -> (a -> m b) -> m [b]
-meh as f = undefined
+meh [] _     = return []
+meh (a:as) f = l2 (:) (f a) (meh as f)
+
+flipType :: (Monad m) => [m a] -> m [a]
+flipType ms = meh ms id
