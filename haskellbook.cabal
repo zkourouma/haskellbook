@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: a345fc53d2b2ae8723de300cb7076e788eb765af21b0026fe42ee5fe3067701f
+-- hash: 1d224d11e076a9135105eab754fb2172a6905c4c57ac3ba6a15df2363deae004
 
 name:                haskellbook
 version:             0.1.0.0
@@ -39,6 +39,7 @@ library
       Applicatives
       Monadic
       Foldables
+      Traversables
   other-modules:
       Paths_haskellbook
   build-depends:

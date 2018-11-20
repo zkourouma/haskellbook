@@ -17,6 +17,9 @@ import           Test.QuickCheck.Classes
 -- Associativity --
 -- (m >>= f) >>= g = m >>= (\x -> f x >>= g)
 --
+-- return :: Monad m => a -> m a
+-- (>>=) :: Monad m => m a -> (a -> m b) -> m b
+--
 {-# ANN bind "HLint: ignore" #-}
 
 bind :: Monad m => (a -> m b) -> m a -> m b

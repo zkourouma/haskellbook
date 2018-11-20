@@ -1,5 +1,10 @@
 module Foldables where
 
+--
+-- foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
+-- foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
+-- foldMap :: (Monoid m, Foldable t) => (a -> m) -> t a -> m
+--
 newtype Identity a =
   Identity a
   deriving (Eq, Show)

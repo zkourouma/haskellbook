@@ -17,6 +17,9 @@ import           Test.QuickCheck.Function
 -- Composition --
 -- fmap (f . g) == fmap f . fmap g
 -- Structure Preservation --
+--
+-- fmap :: Functor f => (a -> b) -> f a -> f b
+--
 functorIdentity :: (Functor f, Eq (f a)) => f a -> Bool
 functorIdentity f = fmap id f == f
 

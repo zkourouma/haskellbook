@@ -3,6 +3,9 @@ module Semigroupoid where
 import           Data.Semigroup
 import           Test.QuickCheck
 
+--
+-- (<>) :: Semigroup a => a -> a -> a
+--
 data Trivial =
   Trivial
   deriving (Eq, Show)

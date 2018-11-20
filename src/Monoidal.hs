@@ -28,6 +28,10 @@ monoidLeftIdentity a = (mempty <> a) == a
 monoidRightIdentity :: (Eq m, Monoid m) => m -> Bool
 monoidRightIdentity a = (a <> mempty) == a
 
+--
+-- mempty :: Monoid a => a
+-- mappend :: Monoid a => a -> a -> a
+--
 newtype First' a = First'
   { getFirst' :: Optional a
   } deriving (Eq, Show)

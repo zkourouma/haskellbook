@@ -20,6 +20,9 @@ import           Test.QuickCheck.Classes
 -- Interchange
 -- u <*> pure y = pure ($ y) <*> u
 --
+-- pure :: Applicative f => a -> f a
+-- (<*>) :: Applicative f => f (a -> b) -> f a -> f b
+--
 added :: Maybe Integer
 added = Just (+ 3) <*> lookup 3 (zip [1, 2, 3] [4, 5, 6])
 
