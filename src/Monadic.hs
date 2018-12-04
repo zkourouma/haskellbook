@@ -18,7 +18,11 @@ import           Test.QuickCheck.Classes
 -- (m >>= f) >>= g = m >>= (\x -> f x >>= g)
 --
 -- return :: Monad m => a -> m a
--- (>>=) :: Monad m => m a -> (a -> m b) -> m b
+-- (>>=) :: Monad m => m a -> (a -> m b) -> m b -- "bind"
+-- (=<<) :: Monad m => (a -> m b) -> m a -> m b -- "flip bind"
+-- (>>) :: Monad m => m a -> m b -> m b -- sequential composition
+-- mapM :: Monad m => (a -> m b) -> [a] -> m [b]
+-- join :: Monad m => m (m a) -> m a
 --
 {-# ANN bind "HLint: ignore" #-}
 

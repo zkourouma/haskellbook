@@ -21,7 +21,7 @@ import           Test.QuickCheck.Classes
 -- u <*> pure y = pure ($ y) <*> u
 --
 -- pure :: Applicative f => a -> f a
--- (<*>) :: Applicative f => f (a -> b) -> f a -> f b
+-- (<*>) :: Applicative f => f (a -> b) -> f a -> f b -- sequential application
 --
 added :: Maybe Integer
 added = Just (+ 3) <*> lookup 3 (zip [1, 2, 3] [4, 5, 6])
