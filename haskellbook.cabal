@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1d224d11e076a9135105eab754fb2172a6905c4c57ac3ba6a15df2363deae004
+-- hash: 093358453af5faf320e8c2807ab2c22a957f137a577cf43c05001aef2a1edad6
 
 name:                haskellbook
 version:             0.1.0.0
@@ -75,6 +75,7 @@ test-suite haskellbook-test
       NineSpec
       SemigroupoidSpec
       TenSpec
+      TraversablesSpec
       TwelveSpec
       Paths_haskellbook
   hs-source-dirs:
