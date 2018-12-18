@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.0.
+-- This file has been generated from package.yaml by hpack version 0.31.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 093358453af5faf320e8c2807ab2c22a957f137a577cf43c05001aef2a1edad6
+-- hash: 90204ad0aa349ed03f2df0f295542c0ddf4de857dc28d34450be3f4df2331692
 
 name:                haskellbook
 version:             0.1.0.0
@@ -40,6 +40,7 @@ library
       Monadic
       Foldables
       Traversables
+      Reader
   other-modules:
       Paths_haskellbook
   build-depends:
