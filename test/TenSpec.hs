@@ -4,7 +4,6 @@ module TenSpec
   ) where
 
 import           Test.Hspec
-import           Test.QuickCheck
 
 import           Ten
 

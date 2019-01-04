@@ -4,7 +4,6 @@ import           Control.Applicative
 import           Data.List                (elemIndex)
 import           Test.QuickCheck          (Arbitrary, arbitrary)
 import           Test.QuickCheck.Checkers
-import           Test.QuickCheck.Classes
 
 -------- Applicative laws --------
 --
@@ -47,8 +46,10 @@ max' = max
 maxed :: Maybe Int
 maxed = max' <$> x1 <*> y1
 
+xs2 :: [Integer]
 xs2 = [1, 2, 3]
 
+ys2 :: [Integer]
 ys2 = [4, 5, 6]
 
 x2 :: Maybe Integer
@@ -79,7 +80,7 @@ instance Functor (Constant a) where
   fmap _ (Constant a) = Constant a
 
 instance Monoid a => Applicative (Constant a) where
-  pure a = Constant mempty
+  pure _ = Constant mempty
   (<*>) (Constant f) (Constant _) = Constant f
 
 data List a

@@ -3,9 +3,7 @@ module ApplicativesSpec
   , spec
   ) where
 
-import           Data.Monoid
 import           Test.Hspec
-import           Test.QuickCheck
 import           Test.QuickCheck.Checkers
 import           Test.QuickCheck.Classes
 

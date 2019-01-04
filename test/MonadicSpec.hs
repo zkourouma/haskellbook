@@ -4,7 +4,6 @@ module MonadicSpec
   ) where
 
 import           Test.Hspec
-import           Test.QuickCheck
 import           Test.QuickCheck.Checkers
 import           Test.QuickCheck.Classes
 

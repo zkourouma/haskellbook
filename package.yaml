@@ -24,6 +24,7 @@ library:
     - Foldables
     - Traversables
     - Reader
+    - Stately
   dependencies:
     - base >=4.7 && <5
     - time
