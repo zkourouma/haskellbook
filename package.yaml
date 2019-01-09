@@ -31,6 +31,8 @@ library:
     - split
     - QuickCheck
     - checkers
+    - dlist
+    - transformers
 executables:
   haskellbook:
     main: Main.hs

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5cf0ec6c74ad7112f049f0880f9ed791465041d7eadfcf9006c571b335e1deca
+-- hash: 84cc6b9f408ed23b63924600c750024cce7790945bd0b568b54ed96ea238c925
 
 name:                haskellbook
 version:             0.1.0.0
@@ -48,8 +48,10 @@ library
       QuickCheck
     , base >=4.7 && <5
     , checkers
+    , dlist
     , split
     , time
+    , transformers
   default-language: Haskell2010
 
 executable haskellbook
