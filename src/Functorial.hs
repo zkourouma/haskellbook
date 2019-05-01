@@ -12,12 +12,14 @@ import           Test.QuickCheck.Function
 {-# ANN functorCompose' "HLint: ignore" #-}
 
 ------ Functor Laws ------
+--
 -- Identity --
 -- fmap id == id
+--
 -- Composition --
 -- fmap (f . g) == fmap f . fmap g
--- Structure Preservation --
 --
+-- Structure Preservation --
 -- fmap :: Functor f => (a -> b) -> f a -> f b
 --
 functorIdentity :: (Functor f, Eq (f a)) => f a -> Bool

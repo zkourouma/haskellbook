@@ -1,8 +1,10 @@
 module Applicatives where
 
 import           Control.Applicative
-import           Data.List                (elemIndex)
-import           Test.QuickCheck          (Arbitrary, arbitrary)
+import           Data.List                      ( elemIndex )
+import           Test.QuickCheck                ( Arbitrary
+                                                , arbitrary
+                                                )
 import           Test.QuickCheck.Checkers
 
 -------- Applicative laws --------
@@ -22,6 +24,7 @@ import           Test.QuickCheck.Checkers
 -- pure :: Applicative f => a -> f a
 -- (<*>) :: Applicative f => f (a -> b) -> f a -> f b -- sequential application
 --
+
 added :: Maybe Integer
 added = Just (+ 3) <*> lookup 3 (zip [1, 2, 3] [4, 5, 6])
 
@@ -103,7 +106,7 @@ instance Arbitrary a => Arbitrary (List a) where
   arbitrary = pure <$> arbitrary
 
 append :: List a -> List a -> List a
-append Nil ys         = ys
+append Nil         ys = ys
 append (Cons x xs) ys = Cons x $ xs `append` ys
 
 fold :: (a -> b -> b) -> b -> List a -> b
@@ -121,18 +124,15 @@ instance Eq a => EqProp (List a) where
 
 take' :: Int -> List a -> List a
 take' _ Nil = Nil
-take' n (Cons x xs)
-  | n > 0 = Cons x (take' (n - 1) xs)
-  | otherwise = Cons x Nil
+take' n (Cons x xs) | n > 0     = Cons x (take' (n - 1) xs)
+                    | otherwise = Cons x Nil
 
 repeat' :: a -> List a
-repeat' x =
-  let c = Cons x c
-   in c
+repeat' x = let c = Cons x c in c
 
 zip' :: List (a -> b) -> List a -> List b
 zip' (Cons x xs) (Cons y ys) = Cons (x y) (zip' xs ys)
-zip' _ _                     = Nil
+zip' _           _           = Nil
 
 newtype ZipList' a =
   ZipList' (List a)
@@ -225,6 +225,4 @@ instance Monoid a => Applicative (Three' a) where
   (<*>) (Three' f g h) (Three' a b b') = Three' (mappend f a) (g b) (h b')
 
 combos :: [a] -> [b] -> [c] -> [(a, b, c)]
-combos = liftA3 f
-  where
-    f a b c = (a, b, c)
+combos = liftA3 f where f a b c = (a, b, c)

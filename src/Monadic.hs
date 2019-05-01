@@ -6,7 +6,7 @@ import           Test.QuickCheck.Checkers
 import           Test.QuickCheck.Classes
 
 --
--------- Monoid laws --------
+-------- Monad laws --------
 --
 -- Right Identity --
 -- m >>= return   = m

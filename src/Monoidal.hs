@@ -3,17 +3,6 @@ module Monoidal where
 import           Data.Monoid
 import           Test.QuickCheck
 
-data Optional a
-  = Nada
-  | Only a
-  deriving (Eq, Show)
-
-instance Monoid a => Monoid (Optional a) where
-  mempty = Nada
-  mappend (Only x) Nada     = Only x
-  mappend Nada (Only x)     = Only x
-  mappend (Only x) (Only y) = Only (mappend x y)
-
 -------- Monoid laws --------
 --
 -- Associativity --
@@ -32,6 +21,18 @@ monoidRightIdentity a = (a <> mempty) == a
 -- mempty :: Monoid a => a
 -- mappend :: Monoid a => a -> a -> a
 --
+
+data Optional a
+  = Nada
+  | Only a
+  deriving (Eq, Show)
+
+instance Monoid a => Monoid (Optional a) where
+  mempty = Nada
+  mappend (Only x) Nada     = Only x
+  mappend Nada (Only x)     = Only x
+  mappend (Only x) (Only y) = Only (mappend x y)
+
 newtype First' a = First'
   { getFirst' :: Optional a
   } deriving (Eq, Show)
@@ -148,8 +149,8 @@ instance Monoid a => Monoid (Mem s a) where
 f' = Mem $ \s -> ("hi", s + 1)
 
 mem' = do
-  let rmzero = runMem mempty 0
-      rmleft = runMem (f' <> mempty) 0
+  let rmzero  = runMem mempty 0
+      rmleft  = runMem (f' <> mempty) 0
       rmright = runMem (mempty <> f') 0
   print rmleft
   print rmright
